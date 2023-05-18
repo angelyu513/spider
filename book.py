@@ -204,21 +204,3 @@ def analysetime():
     lab = ['1990-1995', '1995-2000', '2000-2005', '2005-2010', '2010-2015', '2015年以上']
     plt.pie(h, labels=lab, autopct='%1.1f%%')  # 以百分之多少为单位
     plt.show()
-
-# 控制整个模块流程
-def main():
-    dataBook = []
-    # 遍历10页内的图书信息
-    for i in range(0, 10):
-        gl = geturl('https://book.douban.com/top250?start={}'.format(i))
-        pa = Parserdata(gl)
-        dataBook.extend(pa)  # 把10页的书籍信息都保存在dataBook列表里面，统一保存
-    # 存入到book文件夹
-    savepoint(dataBook)
-    # savemysql(dataBook)
-    analysetime()
-    analysescore()
-    analysemon()
-    anyciyun()
-if __name__ == '__main__':
-    main()
