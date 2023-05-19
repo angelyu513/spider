@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 import csv
 app = Flask(__name__)
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -12,7 +11,7 @@ def home():
 @app.route('/book')
 def book():
     datali = []
-    with open(r'D:\book\book.csv', 'r', encoding='utf-8') as f:
+    with open("./book.csv", 'r', encoding='utf-8') as f:
         data = csv.reader(f)
         title = next(data)
         for item in data:
